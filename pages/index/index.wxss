@@ -1,0 +1,294 @@
+/**index.wxss**/
+
+/* .userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+}
+
+.usermotto {
+  margin-top: 200px;
+} */
+
+.container {
+  /* position: relative; */
+  width: 100%;
+}
+
+.top-banner {
+  width: 100%;
+  height: 120rpx;
+  position: relative;
+}
+
+.logo {
+  width: 250rpx;
+  height: 68rpx;
+  position: absolute;
+  top: 50%;
+  margin-top: -34rpx;
+  left: 20rpx;
+}
+
+.icon {
+  width: 56rpx;
+  height: 56rpx;
+  position: absolute;
+  top: 25rpx;
+  /* margin-top: -28rpx; */
+}
+
+.car {
+  right: 130rpx;
+}
+
+.car-contain text {
+  position: absolute;
+  top: 80rpx;
+  right: 128rpx;
+}
+
+.list-contain text {
+  position: absolute;
+  top: 80rpx;
+  right: 26rpx;
+}
+
+.list {
+  right: 36rpx;
+}
+
+text {
+  font-size: 20rpx;
+}
+
+.scoll-banner {
+  width: 100%;
+  height: 110px;
+  overflow: hidden;
+  /* padding: 20rpx; *//* background: #eee; */
+  white-space: nowrap;
+}
+
+.banner {
+  padding: 12.5px 7.5px;
+}
+
+.scroll-list {
+  display: inline-block;
+  width: 115px;
+  height: 80px;
+  margin: 2.5px;
+  border: 1px solid #eee;
+}
+
+.swiper {
+  height: 440rpx;
+  width: 100%;
+}
+
+.swiper image {
+  height: 100%;
+  width: 100%;
+}
+
+.week-recommend {
+  position: relative;
+  margin-top: 60rpx;
+  width: 100%;
+}
+
+.week-title {
+  height: 30rpx;
+  line-height: 30rpx;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 60rpx;
+}
+
+.bg-img {
+  width: 60rpx;
+  height: 12rpx;
+}
+
+.recommend {
+  margin: 0 20rpx;
+  font-size: 30rpx;
+}
+
+.more {
+  position: absolute;
+  right: 40rpx;
+  font-size: 24rpx;
+  color: rgb(168, 141, 81);
+}
+
+.week-list {
+  height: 340rpx;
+  width: 100%;
+  border-bottom: 1rpx solid rgb(221, 221, 221);
+}
+
+.img-box {
+  float: left;
+  height: 280rpx;
+  width: 280rpx;
+  line-height: 280rpx;
+  text-align: center;
+  margin: 30rpx 30rpx;
+}
+
+.img-box .list-img {
+  max-height: 100%;
+  max-width: 100%;
+  vertical-align: middle;
+}
+
+.list-info {
+  float: right;
+  width: 380rpx;
+  margin: 90rpx 30rpx 30rpx 0;
+}
+
+.list-info .brand, .list-info .detail {
+  display: block;
+  color: rgb(51, 51, 51);
+}
+
+.list-info .brand {
+  font-size: 30rpx;
+  line-height: 32rpx;
+}
+
+.list-info .detail {
+  font-size: 28rpx;
+  line-height: 28rpx;
+  margin: 16rpx 0 40rpx 0;
+}
+
+.price-icon {
+  height: 26rpx;
+  line-height: 26rpx;
+}
+
+.price {
+  font-size: 26rpx;
+  line-height: 26rpx;
+  font-weight: bolder;
+}
+
+icon {
+  position: absolute;
+  right: 66rpx;
+}
+
+.zt {
+  width: 100%;
+}
+
+.ad {
+  width: 100%;
+}
+
+.ad-img {
+  width: 100%;
+  height: 346rpx;
+}
+
+.goods-box {
+  height: 388rpx;
+  width: 100%;
+  padding: 0 30rpx;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.scroll-view {
+  height: 388rpx;
+  width: auto;
+  overflow: hidden;
+  white-space: nowrap;
+  display: flex;
+}
+
+.goods-info {
+  display: inline-block;
+  width: 260rpx;
+  height: 352rpx;
+  text-align: center;
+}
+.goods-info-box {
+  position: relative;  
+}
+.goods-img-box {
+  height: 252repx;
+  width: 260rpx;
+  line-height: 252rpx;
+  text-align: center;
+  margin-right: 16rpx;
+}
+
+.goods-img-box .goods-img {
+  max-height: 100%;
+  max-width: 100%;
+  width: 140rpx;
+  height: 220rpx;
+  vertical-align: middle;
+}
+
+.goods-banner {
+  height: 388rpx;
+  display: inline-block;
+}
+
+.goods-name {
+  display: block;
+  font-size: 24rpx;
+  width: 230rpx;
+  overflow: hidden;
+  /* text-overflow: ellipsis; */
+  white-space: nowrap;
+  color: rgb(102,102,102);
+  margin-left: 24rpx;
+}
+.goods-value{
+  font-size: 24rpx;
+  font-weight:bolder;
+  margin-right: 30rpx;
+}
+.goods-off  {
+  font-size: 20rpx;
+  color: rgb(102,102,102);  
+  right: 20rpx;
+}
+/* 加载更多 */
+.weui-loading {
+  margin: 0 5px;
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-animation: weuiLoading 1s steps(12, end) infinite;
+}
+.weui-loadmore {
+  width: 65%;
+  margin: 1.5em auto;
+  line-height: 1.6em;
+  font-size: 14px;
+  text-align: center;
+}
+.weui-loadmore__tips {
+  display: inline-block;
+  vertical-align: middle;
+}

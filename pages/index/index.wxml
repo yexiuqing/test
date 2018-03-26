@@ -1,0 +1,85 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="top-banner">
+    <image src="../images/logo.png" class="logo"></image>
+    <view class="list-box car-contain">
+      <image src="../images/list.png" class="car icon"></image>
+      <text>购物车</text>
+    </view>
+    <view class="list-box list-contain">
+      <image src="../images/list.png" class="list icon"></image>
+      <text>我的订单</text>
+    </view>
+  </view>
+  <swiper class="swiper" autoplay="true" interval="2000" duration="800">
+    <block wx:for="{{movies}}" wx:for-index="index">
+      <block wx:for="{{item.covers}}" wx:for-item="data">
+        <swiper-item>
+          <image src="{{data.url}}" class="slide-image" mode="aspectFill" />
+        </swiper-item>
+      </block>
+    </block>
+  </swiper>
+  <view class="week-recommend">
+    <view class="week-title">
+      <image src="../images/group21.png" class="bg-img"></image>
+      <text class="recommend">周末精选</text>
+      <image src="../images/group21.png" class="bg-img"></image>
+      <text class="more">查看更多</text>
+    </view>
+    <view class="week-box">
+      <view class="week-list" wx:for="{{weekLists}}">
+        <view class="img-box">
+          <image src="{{item.images[0].url_small}}" class="list-img"></image>
+        </view>
+        <view class="list-info">
+          <text class="brand">{{item.brand.name}}</text>
+          <text class="detail">{{item.name}}</text>
+          <view class="price-icon">
+            <text class="price">{{item.price.value_display}}</text>
+            <icon type="success" size="12"></icon>
+          </view>
+
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="zt">
+    <view class="zt-list" wx:for="{{bottomLists}}">
+      <view class="ad">
+        <image src="{{item.covers[0].url}}" class="ad-img"></image>
+      </view>
+      <view class='goods-box'>
+        <scroll-view class="scroll-view " scroll-left="0" scroll-x='true' bindscrolltoupper="load">
+          <view class="goods-info" wx:for="{{item.sku}}" wx:for-item="data">
+            <view class="goods-img-box">
+              <image src="{{data.images[0].url_small}}" class="goods-img"></image>
+            </view>
+            <view class="goods-info-box">
+              <text class="goods-name">{{data.name}}</text>
+              <text class='goods-value'>{{data.price2.value_display}}</text>
+              <text class="goods-off">{{data.price2.price_off_text}}</text>
+            </view>
+          </view>
+        </scroll-view>
+      </view>
+    </view>
+  </view>
+  <view class="body-view weui-loadmore" hidden="{{isHideLoadMore}}">
+      加载中... 
+  </view>
+  <!-- <image src="../images/banner1.png" class="top-banner"></image>  -->
+  
+  <!-- <view id="tapDemo" bindtap='bindViewDemo'>进入demo页面</view> -->
+  <!-- <view class="userinfo">
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+  <view class="usermotto">
+    <text class="user-motto">{{motto}}</text>
+    <view wx:for="{{array}}"> {{item}} </view>
+  </view> -->
+</view>
