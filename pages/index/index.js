@@ -13,6 +13,8 @@ Page({
     ],
     weekLists: [],
     bottomLists: [],
+    bottomListStart: 1,
+    bottomListEnd: 6,
     userInfo: {},
     hasUserInfo: false,
     isHideLoadMore: false,
@@ -24,7 +26,6 @@ Page({
       url: '../logs/logs'
     })
   },
-
   onLoad: function () {
     if (app.globalData.userInfo) {
       this.setData({
@@ -55,7 +56,7 @@ Page({
     console.log('Hack PageOnLoad');
     this.onScrollShow();
     this.onWeekShow();
-    this.onBottomShow();
+    this.onBottomShow(this.data.bottomListStart, this.data.bottomListEnd);
   },
   getUserInfo: function (e) {
     console.log(e)
@@ -72,7 +73,7 @@ Page({
     }
   },
 
-// 轮播数据
+  // 轮播数据
   onScrollShow: function () {
     var that = this;
     wx.request({
@@ -104,7 +105,7 @@ Page({
 
     })
   },
-// 获取每周推荐
+  // 获取每周推荐
   onWeekShow: function () {
     var that = this;
     wx.request({
@@ -133,12 +134,15 @@ Page({
     })
   },
   // 获取专题数据
-  onBottomShow: function () {
+  onBottomShow: function (start=1, end=6) {
     var that = this;
+    onsole.log(start);
+    console.log(end)
+    var pageNum = 'pn:' + start + ';' + 'l' + end
     wx.request({
       url: 'https://api.ilovelook.cn/api/kolshop/gogoboi/goodslist/list?code=gogoboi',
       data: {
-        page: 'pn:1;l:6',
+        page: pageNum,
         limit: 6
       },
       method: 'POST',
@@ -148,9 +152,16 @@ Page({
       success: function (res) {
         var temp = res.data;
         var result = temp.goods_lists
+        if (end <= 18) {
+          var start = that.data.bottomListStart + 6
+          var end = that.data.bottomListEnd + 6
+        }
         that.setData({
-          'bottomLists': result
+          'bottomLists': result,
+          bottomListStart: start,
+          bottomListEnd: end
         })
+        console.log("成功")
       },
       fail: function () {
         console.log("bottomList接口调用出错")
@@ -164,19 +175,39 @@ Page({
   },
   // 下拉函数
   onReachBottom: function () {
-    console.log('000加载更多')
+    // console.log('000加载更多')
     var that = this
-    setTimeout(() => {
-      that.setData({
-        isHideLoadMore: true,
-        bottomLists:that.onBottomShow() 
-      })
-    }, 500)
+    console.log(that.data.bottomListStart)
+    console.log(that.data.bottomListEnd)
+
+    var result = that.onBottomShow(that.data.bottomListStart, that.data.bottomListEnd)
+
+    result = that.data.bottomLists.push(result)
+    that.setData({
+      isHideLoadMore: true,
+      'bottomLists': result
+    })
   },
- load: function () {
+  onScrollBottom: function () {
     var that = this;
     that.onBottomShow();
     console.log("lower");
+  },
+  // 设置cookie
+  // set 写入 request header 里面
+  setCookie: function () {
+    header = {
+      'content-type': 'application/x-www-form-urlencoded',
+      'cookie': "SESSID=" + wx.getStorageSync("sessionid")
+    }
+  },
+  // getCookie
+  // 请求的response中取
+  getCookie: function () {
+    wx.removeStorageSync('sessionid');
+    let sessionid = res.header['Set-Cookie']
+    sessionid = sessionid.match(/=(\S*);/)[1]
+    wx.setStorageSync('sessionid', sessionid)
   }
 })
 
