@@ -59,7 +59,7 @@ Page({
     this.onBottomShow(this.data.bottomListStart, this.data.bottomListEnd);
   },
   getUserInfo: function (e) {
-    console.log(e)
+    // console.log(e)
     app.globalData.userInfo = e.detail.userInfo
     this.setData({
       userInfo: e.detail.userInfo,
@@ -136,7 +136,7 @@ Page({
   // 获取专题数据
   onBottomShow: function (start=1, end=6) {
     var that = this;
-    onsole.log(start);
+    console.log(start);
     console.log(end)
     var pageNum = 'pn:' + start + ';' + 'l' + end
     wx.request({
@@ -152,14 +152,15 @@ Page({
       success: function (res) {
         var temp = res.data;
         var result = temp.goods_lists
+        var start, end = that.data.bottomListEnd
         if (end <= 18) {
-          var start = that.data.bottomListStart + 6
-          var end = that.data.bottomListEnd + 6
+          start = that.data.bottomListStart + 6
+          end = that.data.bottomListEnd + 6
         }
         that.setData({
           'bottomLists': result,
-          bottomListStart: start,
-          bottomListEnd: end
+          'bottomListStart': start,
+          'bottomListEnd': end
         })
         console.log("成功")
       },
@@ -175,13 +176,9 @@ Page({
   },
   // 下拉函数
   onReachBottom: function () {
-    // console.log('000加载更多')
     var that = this
-    console.log(that.data.bottomListStart)
-    console.log(that.data.bottomListEnd)
-
+    console.log('下拉')
     var result = that.onBottomShow(that.data.bottomListStart, that.data.bottomListEnd)
-
     result = that.data.bottomLists.push(result)
     that.setData({
       isHideLoadMore: true,
