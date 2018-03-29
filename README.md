@@ -1,8 +1,8 @@
 # 小程序test
-## app.json全局中配置，在page中加入路径，在window下定义全局变脸，
-###"pages":[
-####            "pages/index/index",  
-####                  "pages/logs/logs",
+#### app.json全局中配置，在page中加入路径，在window下定义全局变脸，
+####'''"pages":[
+####'''            "pages/index/index",  
+####'''                  "pages/logs/logs",
 ####                  "pages/demo/demo"
 ####               ]
 ####              "window":{
