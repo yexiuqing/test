@@ -25,7 +25,7 @@
       data: {
         code: 'dabing'
       },
-      ethod: 'GET',      
+      method: 'GET',      
       header: {
         'content-type': 'application/json' 
       },
@@ -47,8 +47,8 @@
     })
   }
 ```
-###<br/>小程序中不存在cookie,因此setCookie 和 getCookie 通过改header字段，wx.getStorageSync与wx.setStorageSync可以实现
-###<br/>微信小程序运行环境exports、module并没有定义，挂载underscore.js可以修改Underscore代码，注释原有模块导出语句，使用       module.exports = _ 强制导出
+<br/>小程序中不存在cookie,因此setCookie 和 getCookie 通过改header字段，wx.getStorageSync与wx.setStorageSync可以实现
+<br/>微信小程序运行环境exports、module并没有定义，挂载underscore.js可以修改Underscore代码，注释原有模块导出语句，使用       module.exports = _ 强制导出
 #
 #
 #
