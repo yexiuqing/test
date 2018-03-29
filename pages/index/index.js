@@ -179,7 +179,7 @@ Page({
     var that = this
     console.log('下拉')
     var result = that.onBottomShow(that.data.bottomListStart, that.data.bottomListEnd)
-    result = that.data.bottomLists.push(result)
+    result = that.data.bottomLists.concat(result)
     that.setData({
       isHideLoadMore: true,
       'bottomLists': result
