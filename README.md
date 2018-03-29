@@ -15,7 +15,9 @@
     "enablePullDownRefresh":true
   }
 }
-    // 获取每周推荐
+```
+####    // 获取每周推荐
+```
   onWeekShow: function () {
     var that = this;
     wx.request({
@@ -23,9 +25,9 @@
       data: {
         code: 'dabing'
       },
-      ethod: 'GET',      默认请求方式为get，注意大写
+      ethod: 'GET',      
       header: {
-        'content-type': 'application/json' // 默认值
+        'content-type': 'application/json' 
       },
       success: function (res) {
         var temp = res.data;
