@@ -52,16 +52,16 @@
 ```
 function setCookie() {
     var name = 'Cookie';
-    var sessionid: "SESSID=" + wx.getStorageSync("sessionid");
+    var session ='SESSID='+wx.getStorageSync("sessionid");
     var exp = new Date();
-    exp.setTime(exp.getTime() + 7*24*60*60*1000);
-    var strCookie = name +"="+escape (value)+ ";expires=" + exp.toGMTString();
-    var setHeader = {
+    exp.setTime(exp.getTime() + 7 * 24 * 60 * 60 * 1000);
+    var strCookie = name + "=" + escape(session) + ";expires=" + exp.toGMTString();
+    var setHeader = {
       'content-type': 'application/x-www-form-urlencoded',
       'cookie': strCookie
     }
     wx.request({
-        header:setHeader
+      header: setHeader
     })
 }
 ```
