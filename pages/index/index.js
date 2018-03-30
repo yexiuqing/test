@@ -209,10 +209,15 @@ Page({
   onReachBottom: function () {
     var that = this
     console.log('下拉')
+<<<<<<< HEAD
     var reSetResult = that.onBottomShow(that.data.bottomListStart, that.data.bottomListEnd)
     var result = that.data.bottomLists.concat(reSetResult)
     console.log('7-12:===' + JSON.stringify(reSetResult))
 
+=======
+    var result = that.onBottomShow(that.data.bottomListStart, that.data.bottomListEnd)
+    result = that.data.bottomLists.concat(result)
+>>>>>>> 224769c0140896bf334585f56198868eefb0e48f
     that.setData({
       isHideLoadMore: true,
       'bottomLists': result

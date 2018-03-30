@@ -1,6 +1,5 @@
 /**index.wxss**/
 .container {
-  /* position: relative; */
   width: 100%;
 }
 
@@ -24,7 +23,6 @@
   height: 56rpx;
   position: absolute;
   top: 25rpx;
-  /* margin-top: -28rpx; */
 }
 
 .car {
@@ -55,7 +53,6 @@ text {
   width: 100%;
   height: 110px;
   overflow: hidden;
-  /* padding: 20rpx; *//* background: #eee; */
   white-space: nowrap;
 }
 
