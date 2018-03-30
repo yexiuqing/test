@@ -68,18 +68,4 @@
   <view class="body-view weui-loadmore" hidden="{{isHideLoadMore}}">
       加载中... 
   </view>
-  <!-- <image src="../images/banner1.png" class="top-banner"></image>  -->
-  
-  <!-- <view id="tapDemo" bindtap='bindViewDemo'>进入demo页面</view> -->
-  <!-- <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
-  </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
-    <view wx:for="{{array}}"> {{item}} </view>
-  </view> -->
 </view>

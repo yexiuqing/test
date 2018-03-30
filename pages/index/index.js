@@ -95,6 +95,7 @@ Page({
 
           }
         }
+        wx.request()
         that.setData({
           'movies': result
         })
@@ -105,6 +106,7 @@ Page({
 
     })
   },
+
   // 获取每周推荐
   onWeekShow: function () {
     var that = this;
@@ -134,7 +136,7 @@ Page({
     })
   },
   // 获取专题数据
-  onBottomShow: function (start=1, end=6) {
+  onBottomShow: function (start = 1, end = 6) {
     var that = this;
     console.log(start);
     console.log(end)
@@ -150,18 +152,47 @@ Page({
         'content-type': 'application/json' // 默认值
       },
       success: function (res) {
+        console.log('成功再次请求');
         var temp = res.data;
         var result = temp.goods_lists
-        var start, end = that.data.bottomListEnd
-        if (end <= 18) {
+        var aSku;
+        var reSetResult = [];
+        for (let i in result) {
+          var reSetResultList = {
+            sku: [],
+          };
+          // if (result[i].covers) {
+            reSetResultList.covers = result[i].covers;
+          // } else {
+            // break;
+          // }
+          aSku = result[i].sku;
+          for (let j = 0; j < aSku.length; j++) {
+            if (aSku[j].images && aSku[j].price) {
+              reSetResultList.sku.push(aSku[j])
+            }
+          }
+          reSetResult.push(reSetResultList);
+          // console.log('00000' + JSON.stringify(reSetResult))
+        }
+        var reSetEnd = end
+        end = that.data.bottomListEnd
+        if (end < 18) {
           start = that.data.bottomListStart + 6
           end = that.data.bottomListEnd + 6
+          that.setData({
+            'bottomListStart': start,
+            'bottomListEnd': end
+          })
+        } 
+        if (reSetEnd < 7) {
+          that.setData({
+            'bottomLists': reSetResult,
+          })
+        } else {
+          // console.log('7-12:===' + JSON.stringify(reSetResult))
+          return reSetResult;
         }
-        that.setData({
-          'bottomLists': result,
-          'bottomListStart': start,
-          'bottomListEnd': end
-        })
         console.log("成功")
       },
       fail: function () {
@@ -178,8 +209,10 @@ Page({
   onReachBottom: function () {
     var that = this
     console.log('下拉')
-    var result = that.onBottomShow(that.data.bottomListStart, that.data.bottomListEnd)
-    result = that.data.bottomLists.push(result)
+    var reSetResult = that.onBottomShow(that.data.bottomListStart, that.data.bottomListEnd)
+    var result = that.data.bottomLists.concat(reSetResult)
+    console.log('7-12:===' + JSON.stringify(reSetResult))
+
     that.setData({
       isHideLoadMore: true,
       'bottomLists': result
@@ -192,11 +225,19 @@ Page({
   },
   // 设置cookie
   // set 写入 request header 里面
-  setCookie: function () {
-    header = {
+  setCookie:function() {
+    var name = 'Cookie';
+    var session ='SESSID='+wx.getStorageSync("sessionid");
+    var exp = new Date();
+    exp.setTime(exp.getTime() + 7 * 24 * 60 * 60 * 1000);
+    var strCookie = name + "=" + escape(session) + ";expires=" + exp.toGMTString();
+    var setHeader = {
       'content-type': 'application/x-www-form-urlencoded',
-      'cookie': "SESSID=" + wx.getStorageSync("sessionid")
+      'cookie': strCookie
     }
+    wx.request({
+      header: setHeader
+    })
   },
   // getCookie
   // 请求的response中取
