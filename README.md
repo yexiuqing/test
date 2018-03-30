@@ -73,7 +73,7 @@ function(res) {
 }
 ```
 #### 挂载underscore.js
-####小程序中不能使用require(underscore.js),但是运行环境支持CommoJS模块化，可以通过module.exports暴露对象，require来获取对象
+#### 小程序中不能使用require(underscore.js),但是运行环境支持CommoJS模块化，可以通过module.exports暴露对象，require来获取对象
 ```
   // // Export the Underscore object for **Node.js**, with
   // // backwards-compatibility for the old `require()` API. If we're in
@@ -103,7 +103,7 @@ function(res) {
   //     });
   // }
 ``` 
-####使用
+#### 使用
 ```
 var _ = require('../../utils/underscore.modifyied.js');
 ```
